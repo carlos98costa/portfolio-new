@@ -1,0 +1,6 @@
+export { default as HeroSection } from './hero'
+export { default as AboutSection } from './about'
+export { default as StackSection } from './stack'
+export { default as ProjectsSection } from './projects'
+export { default as ExperienceSection } from './experience'
+export { default as ContactSection } from './contact'
