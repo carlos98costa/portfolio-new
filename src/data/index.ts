@@ -10,6 +10,15 @@ export const projects: Project[] = [
     confidential: true
   },
   {
+    id: 'beastfood',
+    title: 'BeastFood — Rede Social Gastronômica',
+    description: 'Aplicação web para descoberta de restaurantes e compartilhamento de experiências gastronômicas, com feed de avaliações, autenticação, perfis de usuário, favoritos e fluxo de cadastro/gestão de restaurantes.',
+    techStack: ['React', 'REST API', 'JWT/Auth', 'Vercel', 'Render', 'Responsive UI'],
+    highlight: 'Produto social completo com avaliações, restaurantes, perfis e interação entre usuários',
+    liveUrl: 'https://beast-food-nine.vercel.app/',
+    repoUrl: 'https://github.com/carlos98costa/beastFood'
+  },
+  {
     id: 'powerfitness',
     title: 'PowerFitness — Plataforma de Saúde e Treinos',
     description: 'PWA mobile-first com FastAPI + PostgreSQL no backend e Next.js + React no frontend. Integração com OAuth/JWT, APIs externas e WhatsApp API.',
@@ -24,7 +33,7 @@ export const experiences: Experience[] = [
     id: 'fm-negocios',
     company: 'FM Negócios Digitais',
     role: 'Tech Lead Full Stack & Mobile',
-    period: '2022 — Presente',
+    period: '2025 — Presente',
     description: 'Liderança técnica em projetos de saúde e fitness, arquitetura de aplicações escaláveis e gestão de equipe.',
     highlights: ['Arquitetura de microserviços', 'CI/CD avançado', 'Mobile-first development', 'Cloud infrastructure']
   },
@@ -32,7 +41,7 @@ export const experiences: Experience[] = [
     id: 'fazendinha',
     company: 'Fazendinha Conveniência',
     role: 'Desenvolvedor Full Stack Sênior',
-    period: '2020 — 2022',
+    period: '2022 — 2025',
     description: 'Desenvolvimento de soluções para e-commerce e gestão de varejo.',
     highlights: ['APIs REST', 'Sistemas de pagamento', 'Performance optimization', 'UI/UX premium']
   },
@@ -40,7 +49,7 @@ export const experiences: Experience[] = [
     id: 'fast-tech',
     company: 'Fast Tech',
     role: 'Desenvolvedor Full Stack',
-    period: '2018 — 2020',
+    period: '2025 — presente',
     description: 'Desenvolvimento de aplicações web e mobile para diversos clientes corporativos.',
     highlights: ['React Native', 'Node.js', 'SQL/NoSQL databases', 'Agile methodology']
   }
@@ -50,12 +59,17 @@ export const technologies: Technology[] = [
   { name: 'React Native', category: 'mobile' },
   { name: 'Expo', category: 'mobile' },
   { name: 'Next.js', category: 'frontend' },
+  { name: 'React', category: 'frontend' },
   { name: 'TypeScript', category: 'frontend' },
+  { name: 'Responsive UI', category: 'frontend' },
   { name: 'FastAPI', category: 'backend' },
+  { name: 'REST APIs', category: 'backend' },
+  { name: 'JWT/Auth', category: 'backend' },
   { name: 'PostgreSQL', category: 'database' },
   { name: 'Docker', category: 'tools' },
   { name: 'GitHub Actions', category: 'tools' },
   { name: 'Railway', category: 'cloud' },
+  { name: 'Render', category: 'cloud' },
   { name: 'Vercel', category: 'cloud' },
   { name: 'Apple HealthKit', category: 'tools' },
   { name: 'Google Health Connect', category: 'tools' }

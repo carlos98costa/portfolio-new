@@ -5,6 +5,8 @@ export interface Project {
   techStack: string[]
   highlight: string
   confidential?: boolean
+  liveUrl?: string
+  repoUrl?: string
 }
 
 export interface Experience {
