@@ -7,6 +7,7 @@ export interface Project {
   confidential?: boolean
   liveUrl?: string
   repoUrl?: string
+  imageUrl?: string
 }
 
 export interface Experience {

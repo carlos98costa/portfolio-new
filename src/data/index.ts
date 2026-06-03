@@ -15,6 +15,7 @@ export const projects: Project[] = [
     description: 'Aplicação web para descoberta de restaurantes e compartilhamento de experiências gastronômicas, com feed de avaliações, autenticação, perfis de usuário, favoritos e fluxo de cadastro/gestão de restaurantes.',
     techStack: ['React', 'REST API', 'JWT/Auth', 'Vercel', 'Render', 'Responsive UI'],
     highlight: 'Produto social completo com avaliações, restaurantes, perfis e interação entre usuários',
+    imageUrl: '/images/projects/beastFood.png',
     liveUrl: 'https://beast-food-nine.vercel.app/',
     repoUrl: 'https://github.com/carlos98costa/beastFood'
   },
