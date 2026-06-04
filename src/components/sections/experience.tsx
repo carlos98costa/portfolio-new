@@ -28,21 +28,32 @@ export default function ExperienceSection() {
           </div>
 
           <div className="mx-auto max-w-4xl">
-            <div className="relative space-y-5 before:absolute before:left-6 before:top-8 before:h-[calc(100%-4rem)] before:w-px before:bg-gradient-to-b before:from-blue-400/40 before:via-white/10 before:to-transparent md:before:left-8">
+            <div className="relative space-y-5 before:absolute before:left-6 before:top-8 before:z-10 before:h-[calc(100%-4rem)] before:w-px before:bg-gradient-to-b before:from-blue-400/70 before:via-violet-400/30 before:to-transparent after:absolute after:left-6 after:top-8 after:h-[calc(100%-4rem)] after:w-0.5 after:-translate-x-px after:bg-gradient-to-b after:from-blue-400/55 after:via-blue-400/15 after:to-transparent after:blur-[3px] md:before:left-8 md:after:left-8">
               {experiences.map((exp, index) => {
-                const isCurrent = exp.period.toLowerCase().includes('atual')
+                const isCurrent = /presente|atual|present/i.test(exp.period)
 
                 return (
                   <motion.article
                     key={exp.id}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.08, duration: 0.45 }}
+                    transition={{ delay: index * 0.08, duration: 0.5 }}
                     viewport={{ once: true }}
-                    className={`relative rounded-[1.75rem] border bg-zinc-950/55 p-6 pl-16 shadow-xl shadow-black/10 backdrop-blur-sm transition-all duration-300 hover:border-blue-300/25 md:pl-20 ${isCurrent ? 'border-blue-400/25' : 'border-white/[0.07]'}`}
+                    className={`group relative overflow-hidden rounded-[1.75rem] border bg-zinc-950/55 p-6 pl-16 backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 md:pl-20 ${isCurrent ? 'border-blue-400/30 shadow-[0_22px_64px_-28px_rgba(59,130,246,0.5)] hover:border-blue-300/50' : 'border-white/[0.07] shadow-[0_12px_40px_-18px_rgba(0,0,0,0.8)] hover:border-blue-300/25 hover:shadow-[0_22px_60px_-30px_rgba(59,130,246,0.32)]'}`}
                   >
+                    {/* Hover spotlight */}
+                    <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-[radial-gradient(110%_80%_at_0%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    {isCurrent && (
+                      <>
+                        {/* Gradient border */}
+                        <div aria-hidden className="mask-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] p-px [background:linear-gradient(140deg,rgba(59,130,246,0.6),rgba(139,92,246,0.22)_45%,transparent_72%)]" />
+                        {/* Pulsing border */}
+                        <div aria-hidden className="pointer-events-none absolute inset-0 z-10 animate-pulse rounded-[inherit] ring-1 ring-inset ring-blue-400/40" />
+                      </>
+                    )}
+
                     {/* Timeline icon */}
-                    <div className={`absolute left-3 top-6 flex h-12 w-12 items-center justify-center rounded-2xl border md:left-5 ${isCurrent ? 'border-blue-400/30 bg-blue-500/15 text-blue-300 shadow-[0_0_20px_rgba(59,130,246,0.2)]' : 'border-white/10 bg-white/[0.04] text-zinc-400'}`}>
+                    <div className={`absolute left-3 top-6 z-20 flex h-12 w-12 items-center justify-center rounded-2xl border md:left-5 ${isCurrent ? 'border-blue-400/40 bg-gradient-to-br from-blue-500/30 to-violet-500/20 text-blue-100 shadow-[0_0_28px_rgba(59,130,246,0.4)]' : 'border-white/10 bg-white/[0.04] text-zinc-400 group-hover:border-blue-300/20 group-hover:text-zinc-200'}`}>
                       <Briefcase className="h-5 w-5" />
                     </div>
 
@@ -71,7 +82,7 @@ export default function ExperienceSection() {
                       {exp.highlights.map((highlight) => (
                         <span
                           key={highlight}
-                          className={`rounded-full border px-3 py-1.5 text-xs font-medium ${isCurrent ? 'border-blue-400/25 bg-blue-500/[0.10] text-zinc-200' : 'border-white/[0.10] bg-white/[0.04] text-zinc-300'}`}
+                          className={`rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:scale-105 ${isCurrent ? 'border-blue-400/30 bg-gradient-to-r from-blue-500/20 to-violet-500/15 text-blue-50' : 'border-white/[0.10] bg-white/[0.04] text-zinc-300 hover:border-white/20 hover:bg-white/[0.07]'}`}
                         >
                           {highlight}
                         </span>

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, FileDown } from 'lucide-react'
+import { ArrowRight, FileDown, Smartphone, Server, Cloud } from 'lucide-react'
 import { useState, useRef, useCallback } from 'react'
 import { ArchVisual } from '@/components/ui/arch-visual'
 
@@ -20,9 +20,30 @@ const LinkedInIcon = () => (
 )
 
 const credibility = [
-  { label: 'Mobile', value: 'React Native, Expo e integrações nativas' },
-  { label: 'Backend', value: 'FastAPI, PostgreSQL, APIs e autenticação' },
-  { label: 'Entrega', value: 'Docker, CI/CD, Railway, Vercel e cloud' },
+  {
+    label: 'Mobile',
+    value: 'React Native, Expo e integrações nativas',
+    icon: Smartphone,
+    color: 'text-orange-300',
+    iconBg: 'border-orange-400/25 bg-orange-500/10',
+    glow: 'hover:border-orange-400/35 hover:shadow-[0_18px_44px_-20px_rgba(249,115,22,0.5)]',
+  },
+  {
+    label: 'Backend',
+    value: 'FastAPI, PostgreSQL, APIs e autenticação',
+    icon: Server,
+    color: 'text-emerald-300',
+    iconBg: 'border-emerald-400/25 bg-emerald-500/10',
+    glow: 'hover:border-emerald-400/35 hover:shadow-[0_18px_44px_-20px_rgba(16,185,129,0.5)]',
+  },
+  {
+    label: 'Entrega',
+    value: 'Docker, CI/CD, Railway, Vercel e cloud',
+    icon: Cloud,
+    color: 'text-sky-300',
+    iconBg: 'border-sky-400/25 bg-sky-500/10',
+    glow: 'hover:border-sky-400/35 hover:shadow-[0_18px_44px_-20px_rgba(56,189,248,0.5)]',
+  },
 ]
 
 export default function HeroSection() {
@@ -84,7 +105,7 @@ export default function HeroSection() {
                 priority
               />
             </div>
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-blue-400/20 bg-blue-500/[0.07] px-4 py-2 text-sm font-medium text-blue-200 shadow-[0_0_20px_rgba(59,130,246,0.12)] backdrop-blur">
+            <div className="relative inline-flex items-center gap-2.5 rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/20 via-blue-500/10 to-violet-500/15 px-4 py-2 text-sm font-semibold text-blue-100 shadow-[0_0_34px_rgba(59,130,246,0.25)] backdrop-blur">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -101,7 +122,7 @@ export default function HeroSection() {
             className="mx-auto max-w-5xl text-5xl font-bold tracking-[-0.04em] text-white sm:text-6xl md:text-7xl lg:mx-0 lg:text-[5.5rem] lg:leading-[1.02]"
           >
             Eu desenho, construo e{' '}
-            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-violet-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-violet-400 bg-clip-text text-transparent drop-shadow-[0_2px_32px_rgba(56,189,248,0.28)]">
               entrego produto digital em produção.
             </span>
           </motion.h1>
@@ -123,15 +144,23 @@ export default function HeroSection() {
             transition={{ delay: 0.4, duration: 0.7 }}
             className="mt-8 grid gap-3 sm:grid-cols-3"
           >
-            {credibility.map((item) => (
-              <div
-                key={item.label}
-                className="rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-left backdrop-blur-sm"
-              >
-                <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-300/80">{item.label}</div>
-                <div className="mt-2 text-sm leading-6 font-medium text-zinc-200">{item.value}</div>
-              </div>
-            ))}
+            {credibility.map((item) => {
+              const Icon = item.icon
+              return (
+                <div
+                  key={item.label}
+                  className={`group rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07] ${item.glow}`}
+                >
+                  <div className="flex items-center gap-2">
+                    <span className={`flex h-8 w-8 items-center justify-center rounded-xl border ${item.iconBg} ${item.color} transition-transform duration-300 group-hover:scale-110`}>
+                      <Icon className="h-4 w-4" />
+                    </span>
+                    <div className={`text-xs font-bold uppercase tracking-[0.18em] ${item.color}`}>{item.label}</div>
+                  </div>
+                  <div className="mt-3 text-sm leading-6 font-medium text-zinc-200">{item.value}</div>
+                </div>
+              )
+            })}
           </motion.div>
 
           {/* CTAs */}
@@ -219,8 +248,13 @@ export default function HeroSection() {
           transition={{ delay: 0.35, duration: 0.7 }}
           className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          {/* Outer glow */}
-          <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 to-violet-500/8 blur-2xl" />
+          {/* Outer glow — slow breathing bloom */}
+          <motion.div
+            aria-hidden
+            className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(55%_55%_at_50%_35%,rgba(59,130,246,0.24),transparent_70%)] blur-2xl"
+            animate={{ opacity: [0.55, 0.9, 0.55], scale: [0.98, 1.03, 0.98] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          />
           <div className="relative">
             <ArchVisual />
           </div>

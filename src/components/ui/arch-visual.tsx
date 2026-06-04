@@ -68,8 +68,10 @@ function FlowConnector({ dotClass }: { dotClass: string }) {
 
 export function ArchVisual() {
   return (
-    <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-zinc-950/80 shadow-2xl shadow-black/40 backdrop-blur-xl">
-      <div className="p-6">
+    <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.08] bg-zinc-950/80 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl">
+      {/* Gradient border */}
+      <div aria-hidden className="mask-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] p-px [background:linear-gradient(150deg,rgba(59,130,246,0.5),rgba(139,92,246,0.18)_45%,transparent_72%)]" />
+      <div className="relative p-6">
         {/* Header */}
         <div className="mb-5 border-b border-white/[0.07] pb-4">
           <div className="flex items-center justify-between">
@@ -100,7 +102,7 @@ export function ArchVisual() {
                 initial={{ opacity: 0, x: 14 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1, duration: 0.4, ease: 'easeOut' }}
-                className={`flex items-center gap-3 rounded-2xl border px-4 py-3 ${layer.border} ${layer.bg}`}
+                className={`flex items-center gap-3 rounded-2xl border px-4 py-3 transition-transform duration-300 hover:scale-[1.025] ${layer.border} ${layer.bg}`}
               >
                 {/* Pulsing status dot */}
                 <div className="relative flex h-2 w-2 shrink-0">

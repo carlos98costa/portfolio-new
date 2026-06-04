@@ -36,6 +36,7 @@ const stats = [
     label: 'Anos de experiência',
     sub: '2022 — presente',
     color: 'text-blue-400',
+    glow: 'drop-shadow-[0_2px_18px_rgba(59,130,246,0.5)]',
   },
   {
     value: 3,
@@ -43,6 +44,7 @@ const stats = [
     label: 'Produtos em produção',
     sub: 'mobile · web · PWA',
     color: 'text-emerald-400',
+    glow: 'drop-shadow-[0_2px_18px_rgba(16,185,129,0.5)]',
   },
   {
     value: 2,
@@ -50,6 +52,7 @@ const stats = [
     label: 'Plataformas nativas',
     sub: 'iOS e Android',
     color: 'text-orange-400',
+    glow: 'drop-shadow-[0_2px_18px_rgba(249,115,22,0.5)]',
   },
   {
     value: 4,
@@ -57,6 +60,7 @@ const stats = [
     label: 'Camadas de stack',
     sub: 'app · api · db · cloud',
     color: 'text-violet-400',
+    glow: 'drop-shadow-[0_2px_18px_rgba(139,92,246,0.5)]',
   },
 ]
 
@@ -73,9 +77,9 @@ export default function StatsStrip() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.08, duration: 0.45 }}
               viewport={{ once: true }}
-              className="text-center"
+              className="text-center transition-transform duration-300 hover:scale-105"
             >
-              <div className={`text-4xl font-bold tabular-nums tracking-tight md:text-5xl ${stat.color}`}>
+              <div className={`text-4xl font-bold tabular-nums tracking-tight md:text-5xl ${stat.color} ${stat.glow}`}>
                 <Counter to={stat.value} suffix={stat.suffix} />
               </div>
               <div className="mt-2 text-base font-semibold text-zinc-100">{stat.label}</div>

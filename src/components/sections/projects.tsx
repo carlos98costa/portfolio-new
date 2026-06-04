@@ -50,43 +50,52 @@ const projectConfig = {
 
 const accentClasses = {
   emerald: {
-    border: 'border-emerald-400/25',
-    hoverBorder: 'hover:border-emerald-300/45',
+    border: 'border-emerald-400/20',
+    hoverBorder: 'hover:border-emerald-300/50',
     text: 'text-emerald-200',
     textMuted: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
-    topLine: 'from-emerald-400/80 to-transparent',
     badgeBorder: 'border-emerald-400/30',
     numberColor: 'text-emerald-400',
     mockupBg: 'bg-emerald-950/40',
     decisionBorder: 'border-emerald-400/25',
-    decisionBg: 'bg-emerald-500/[0.07]',
+    decisionBg: 'bg-gradient-to-br from-emerald-500/[0.15] via-emerald-500/[0.05] to-transparent',
+    decisionGlow: 'shadow-[inset_0_1px_0_rgba(16,185,129,0.18)]',
+    glow: 'hover:shadow-[0_30px_80px_-32px_rgba(16,185,129,0.5)]',
+    borderGrad: '[background:linear-gradient(140deg,rgba(16,185,129,0.6),rgba(255,255,255,0.07)_36%,transparent_64%)]',
+    glowRadial: 'bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(16,185,129,0.16),transparent_60%)]',
   },
   orange: {
-    border: 'border-orange-400/25',
-    hoverBorder: 'hover:border-orange-300/45',
+    border: 'border-orange-400/20',
+    hoverBorder: 'hover:border-orange-300/50',
     text: 'text-orange-200',
     textMuted: 'text-orange-400',
     bg: 'bg-orange-500/10',
-    topLine: 'from-orange-400/80 to-transparent',
     badgeBorder: 'border-orange-400/30',
     numberColor: 'text-orange-400',
     mockupBg: 'bg-orange-950/40',
     decisionBorder: 'border-orange-400/25',
-    decisionBg: 'bg-orange-500/[0.07]',
+    decisionBg: 'bg-gradient-to-br from-orange-500/[0.15] via-orange-500/[0.05] to-transparent',
+    decisionGlow: 'shadow-[inset_0_1px_0_rgba(249,115,22,0.18)]',
+    glow: 'hover:shadow-[0_30px_80px_-32px_rgba(249,115,22,0.5)]',
+    borderGrad: '[background:linear-gradient(140deg,rgba(249,115,22,0.6),rgba(255,255,255,0.07)_36%,transparent_64%)]',
+    glowRadial: 'bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(249,115,22,0.15),transparent_60%)]',
   },
   cyan: {
-    border: 'border-cyan-400/25',
-    hoverBorder: 'hover:border-cyan-300/45',
+    border: 'border-cyan-400/20',
+    hoverBorder: 'hover:border-cyan-300/50',
     text: 'text-cyan-200',
     textMuted: 'text-cyan-400',
     bg: 'bg-cyan-500/10',
-    topLine: 'from-cyan-400/80 to-transparent',
     badgeBorder: 'border-cyan-400/30',
     numberColor: 'text-cyan-400',
     mockupBg: 'bg-cyan-950/40',
     decisionBorder: 'border-cyan-400/25',
-    decisionBg: 'bg-cyan-500/[0.07]',
+    decisionBg: 'bg-gradient-to-br from-cyan-500/[0.15] via-cyan-500/[0.05] to-transparent',
+    decisionGlow: 'shadow-[inset_0_1px_0_rgba(34,211,238,0.18)]',
+    glow: 'hover:shadow-[0_30px_80px_-32px_rgba(34,211,238,0.45)]',
+    borderGrad: '[background:linear-gradient(140deg,rgba(34,211,238,0.55),rgba(255,255,255,0.07)_36%,transparent_64%)]',
+    glowRadial: 'bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(34,211,238,0.15),transparent_60%)]',
   },
 }
 
@@ -128,14 +137,16 @@ export default function ProjectsSection() {
               return (
                 <motion.article
                   key={project.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.12, duration: 0.5 }}
+                  transition={{ delay: index * 0.12, duration: 0.6, ease: [0.21, 0.5, 0.32, 1] }}
                   viewport={{ once: true }}
-                  className={`group relative overflow-hidden rounded-[2rem] border bg-zinc-950/60 shadow-2xl shadow-black/20 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 ${accent.border} ${accent.hoverBorder} ${isFeatured ? 'lg:col-span-2' : ''}`}
+                  className={`group relative overflow-hidden rounded-[2rem] border bg-zinc-950/60 shadow-[0_12px_44px_-18px_rgba(0,0,0,0.85)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 ${accent.border} ${accent.hoverBorder} ${accent.glow} ${isFeatured ? 'lg:col-span-2' : ''}`}
                 >
-                  {/* Top accent line */}
-                  <div className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r ${accent.topLine}`} />
+                  {/* True gradient border */}
+                  <div aria-hidden className={`mask-border pointer-events-none absolute inset-0 z-30 rounded-[inherit] p-px ${accent.borderGrad}`} />
+                  {/* Hover spotlight bloom */}
+                  <div aria-hidden className={`pointer-events-none absolute inset-0 z-20 rounded-[inherit] opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${accent.glowRadial}`} />
 
                   {isFeatured ? (
                     /* Featured card — horizontal layout */
@@ -160,9 +171,11 @@ export default function ProjectsSection() {
                         ) : (
                           <div className={`h-full min-h-64 lg:min-h-[440px] ${accent.mockupBg}`} />
                         )}
-                        {/* Decorative number — visible, outlined */}
+                        {/* Glass overlay — depth + top sheen */}
+                        <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-white/[0.05] ring-1 ring-inset ring-white/[0.06]" />
+                        {/* Decorative number — large, premium */}
                         <div
-                          className={`pointer-events-none absolute bottom-4 left-5 select-none font-mono text-[8rem] font-black leading-none ${accent.numberColor} opacity-[0.12]`}
+                          className={`pointer-events-none absolute bottom-4 left-5 select-none font-mono text-[8rem] font-black leading-none ${accent.numberColor} opacity-25 drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]`}
                           aria-hidden="true"
                         >
                           {config.number}
@@ -184,7 +197,7 @@ export default function ProjectsSection() {
                           {project.description}
                         </p>
 
-                        <div className={`mt-7 rounded-2xl border p-5 ${accent.decisionBorder} ${accent.decisionBg}`}>
+                        <div className={`mt-7 rounded-2xl border p-5 ${accent.decisionBorder} ${accent.decisionBg} ${accent.decisionGlow}`}>
                           <p className={`font-mono text-xs font-bold uppercase tracking-[0.2em] ${accent.textMuted}`}>
                             Decisão técnica
                           </p>
@@ -195,7 +208,7 @@ export default function ProjectsSection() {
                           {project.techStack.map((tech) => (
                             <span
                               key={tech}
-                              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-zinc-200"
+                              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-zinc-200 transition-all duration-200 hover:scale-105 hover:border-white/25 hover:bg-white/[0.09] hover:text-white"
                             >
                               {hasTechIcon(tech) && <TechIcon name={tech} size={12} colorized />}
                               {tech}
@@ -243,7 +256,7 @@ export default function ProjectsSection() {
                     <div className="relative flex h-full flex-col p-6">
                       {/* Decorative number */}
                       <div
-                        className={`pointer-events-none absolute right-5 top-4 select-none font-mono text-[6rem] font-black leading-none ${accent.numberColor} opacity-[0.09]`}
+                        className={`pointer-events-none absolute right-5 top-4 z-[1] select-none font-mono text-[6rem] font-black leading-none ${accent.numberColor} opacity-[0.14]`}
                         aria-hidden="true"
                       >
                         {config.number}
@@ -259,6 +272,7 @@ export default function ProjectsSection() {
                             sizes="(min-width: 1024px) 50vw, 100vw"
                             className={`object-contain object-center transition-transform duration-700 group-hover:scale-[1.02] ${config.imagePad ? 'rounded-lg' : ''}`}
                           />
+                          <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-white/[0.04]" />
                         </div>
                       ) : Mockup ? (
                         <div className={`mb-7 h-64 overflow-hidden rounded-2xl border ${accent.border} ${accent.mockupBg}`}>
@@ -280,7 +294,7 @@ export default function ProjectsSection() {
                       <p className="text-base leading-7 font-medium text-zinc-200">{project.description}</p>
 
                       {/* Decision */}
-                      <div className={`mt-6 rounded-2xl border p-4 ${accent.decisionBorder} ${accent.decisionBg}`}>
+                      <div className={`mt-6 rounded-2xl border p-4 ${accent.decisionBorder} ${accent.decisionBg} ${accent.decisionGlow}`}>
                         <p className={`font-mono text-xs font-bold uppercase tracking-[0.2em] ${accent.textMuted}`}>
                           Decisão técnica
                         </p>
@@ -292,7 +306,7 @@ export default function ProjectsSection() {
                         {project.techStack.map((tech) => (
                           <span
                             key={tech}
-                            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-zinc-200"
+                            className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1.5 text-xs font-medium text-zinc-200 transition-all duration-200 hover:scale-105 hover:border-white/25 hover:bg-white/[0.09] hover:text-white"
                           >
                             {hasTechIcon(tech) && <TechIcon name={tech} size={12} colorized />}
                             {tech}

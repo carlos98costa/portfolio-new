@@ -4,6 +4,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Clips a 1px-padded box to its outline so a gradient background renders as a
+   true gradient border. Pair with `p-px` + an arbitrary `[background:...]`. */
+@utility mask-border {
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
