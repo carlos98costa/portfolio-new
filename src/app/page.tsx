@@ -1,6 +1,7 @@
 import Navbar from '@/components/layout/navbar'
 import Footer from '@/components/layout/footer'
 import HeroSection from '@/components/sections/hero'
+import StatsStrip from '@/components/sections/stats-strip'
 import AboutSection from '@/components/sections/about'
 import StackSection from '@/components/sections/stack'
 import ProjectsSection from '@/components/sections/projects'
@@ -13,6 +14,7 @@ export default function Home() {
       <Navbar />
       <main className="pt-20">
         <HeroSection />
+        <StatsStrip />
         <AboutSection />
         <StackSection />
         <ProjectsSection />

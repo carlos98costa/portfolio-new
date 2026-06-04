@@ -44,10 +44,10 @@ export default function Navbar() {
             onClick={closeMenu}
             className="group inline-flex items-center gap-3 font-mono text-lg font-bold tracking-tight text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/25 bg-blue-500/10 text-blue-100 shadow-[0_0_24px_rgba(59,130,246,0.18)] transition-colors group-hover:bg-blue-500/20">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/30 bg-gradient-to-br from-blue-600/30 to-violet-600/20 text-blue-100 shadow-[0_0_20px_rgba(59,130,246,0.22)] transition-all group-hover:shadow-[0_0_28px_rgba(59,130,246,0.32)]">
               CC
             </span>
-            <span className="hidden text-sm uppercase tracking-[0.28em] text-zinc-400 sm:inline">Portfolio</span>
+            <span className="hidden text-sm uppercase tracking-[0.28em] text-zinc-500 sm:inline">Portfolio</span>
           </Link>
 
           <div className="hidden items-center rounded-full border border-white/10 bg-white/[0.03] p-1 md:flex">

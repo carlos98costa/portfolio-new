@@ -7,7 +7,8 @@ export const projects: Project[] = [
     description: 'Aplicação mobile iOS/Android com React Native + Expo, integrando Apple HealthKit e Google Health Connect para sincronização biométrica de sono, BPM, respiração e SpO2.',
     techStack: ['React Native', 'Expo', 'FastAPI', 'PostgreSQL', 'Docker', 'Apple HealthKit', 'Google Health Connect'],
     highlight: 'Sistema de sincronização biométrica em tempo real',
-    confidential: true
+    confidential: true,
+    imageUrl: '/images/projects/grid.png',
   },
   {
     id: 'beastfood',
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     description: 'PWA mobile-first com FastAPI + PostgreSQL no backend e Next.js + React no frontend. Integração com OAuth/JWT, APIs externas e WhatsApp API.',
     techStack: ['Next.js', 'React', 'FastAPI', 'PostgreSQL', 'Docker', 'Railway', 'Vercel', 'WhatsApp API'],
     highlight: 'Arquitetura escalável com deploy automatizado',
+    imageUrl: '/images/projects/power.png',
     confidential: true
   }
 ]

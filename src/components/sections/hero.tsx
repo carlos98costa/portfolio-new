@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, BadgeCheck, FileDown, Layers3, ShieldCheck } from 'lucide-react'
-import { useState } from 'react'
+import Image from 'next/image'
+import { ArrowRight, FileDown } from 'lucide-react'
+import { useState, useRef, useCallback } from 'react'
+import { ArchVisual } from '@/components/ui/arch-visual'
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor" aria-hidden="true">
@@ -23,33 +25,37 @@ const credibility = [
   { label: 'Entrega', value: 'Docker, CI/CD, Railway, Vercel e cloud' },
 ]
 
-const operatingModel = [
-  {
-    icon: Layers3,
-    title: 'Arquitetura antes da tela',
-    text: 'Defino fronteiras, dados, riscos de integração e plano de deploy antes de acelerar implementação.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Produto sustentável',
-    text: 'Código legível, monitorável e preparado para manutenção por equipa — não apenas uma demo bonita.',
-  },
-  {
-    icon: BadgeCheck,
-    title: 'Entrega ponta a ponta',
-    text: 'Experiência em app, API, banco, infra e publicação para transformar requisito em operação real.',
-  },
-]
-
 export default function HeroSection() {
   const [isOpen, setIsOpen] = useState(false)
+  const [mouse, setMouse] = useState({ x: 0.5, y: 0.5 })
+  const heroRef = useRef<HTMLElement>(null)
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLElement>) => {
+    const rect = heroRef.current?.getBoundingClientRect()
+    if (!rect) return
+    setMouse({
+      x: (e.clientX - rect.left) / rect.width,
+      y: (e.clientY - rect.top) / rect.height,
+    })
+  }, [])
 
   return (
-    <section className="relative flex min-h-screen items-center overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
+    <section
+      ref={heroRef}
+      onMouseMove={handleMouseMove}
+      className="relative flex min-h-screen items-center overflow-hidden px-4 py-24 sm:px-6 lg:px-8"
+    >
+      {/* Mouse-tracking spotlight */}
+      <div
+        className="pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(700px circle at ${mouse.x * 100}% ${mouse.y * 100}%, rgba(59,130,246,0.10), transparent 50%)`,
+        }}
+      />
+
+      {/* Static top line */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute left-1/2 top-[-14rem] h-[38rem] w-[38rem] -translate-x-1/2 rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute bottom-0 right-[-16rem] h-[34rem] w-[34rem] rounded-full bg-cyan-500/8 blur-3xl" />
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300/40 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
       </div>
 
       <motion.div
@@ -58,36 +64,59 @@ export default function HeroSection() {
         transition={{ duration: 0.7 }}
         className="container mx-auto grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr]"
       >
+        {/* Left column */}
         <div className="max-w-4xl text-center lg:text-left">
+
+          {/* Avatar + badge */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm font-medium text-zinc-300 backdrop-blur"
+            className="mb-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
           >
-            <span className="h-2 w-2 rounded-full bg-emerald-300" />
-            Tech Lead Full Stack & Mobile
+            <div className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-blue-400/40 shadow-[0_0_16px_rgba(59,130,246,0.25)]">
+              <Image
+                src="/images/myself.jpg"
+                fill
+                alt="Carlos Costa"
+                className="object-cover object-[center_18%]"
+                sizes="44px"
+                priority
+              />
+            </div>
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-blue-400/20 bg-blue-500/[0.07] px-4 py-2 text-sm font-medium text-blue-200 shadow-[0_0_20px_rgba(59,130,246,0.12)] backdrop-blur">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              </span>
+              Tech Lead Full Stack & Mobile
+            </div>
           </motion.div>
 
+          {/* H1 */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.7 }}
-            className="mx-auto max-w-5xl text-5xl font-semibold tracking-[-0.06em] text-white sm:text-6xl md:text-7xl lg:mx-0 lg:text-8xl"
+            className="mx-auto max-w-5xl text-5xl font-bold tracking-[-0.04em] text-white sm:text-6xl md:text-7xl lg:mx-0 lg:text-[5.5rem] lg:leading-[1.02]"
           >
-            Eu desenho, construo e entrego produto digital em produção.
+            Eu desenho, construo e{' '}
+            <span className="bg-gradient-to-r from-blue-400 via-blue-300 to-violet-400 bg-clip-text text-transparent">
+              entrego produto digital em produção.
+            </span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-300 md:text-xl lg:mx-0"
+            className="mx-auto mt-7 max-w-2xl text-lg leading-8 font-medium text-zinc-200 md:text-xl lg:mx-0"
           >
             Sou Carlos Costa. Atuo da arquitetura ao deploy em apps mobile, PWAs e APIs,
             com foco em decisões técnicas claras, integrações reais e produto que continua evoluindo depois do lançamento.
           </motion.p>
 
+          {/* Credibility cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -95,13 +124,17 @@ export default function HeroSection() {
             className="mt-8 grid gap-3 sm:grid-cols-3"
           >
             {credibility.map((item) => (
-              <div key={item.label} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4 text-left backdrop-blur-sm">
-                <div className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-200">{item.label}</div>
-                <div className="mt-2 text-sm leading-6 text-zinc-400">{item.value}</div>
+              <div
+                key={item.label}
+                className="rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-left backdrop-blur-sm"
+              >
+                <div className="text-xs font-bold uppercase tracking-[0.2em] text-blue-300/80">{item.label}</div>
+                <div className="mt-2 text-sm leading-6 font-medium text-zinc-200">{item.value}</div>
               </div>
             ))}
           </motion.div>
 
+          {/* CTAs */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,42 +143,46 @@ export default function HeroSection() {
           >
             <Link
               href="#projects"
-              className="group inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 font-semibold text-zinc-950 transition-all hover:-translate-y-0.5 hover:bg-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
             >
               Ver cases e decisões técnicas
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
+
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-xl border border-white/15 bg-white/[0.04] px-6 py-3 font-semibold text-zinc-200 transition-all hover:-translate-y-0.5 hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:w-auto"
+                className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-white/[0.14] bg-white/[0.06] px-6 py-3 font-semibold text-zinc-100 transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:w-auto"
               >
                 <FileDown className="mr-2 h-4 w-4" />
                 Download CV
               </button>
               {isOpen && (
-                <div className="absolute left-1/2 z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/10 bg-zinc-950/95 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl">
+                <div className="absolute left-1/2 z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/95 p-2 shadow-2xl shadow-black/50 backdrop-blur-xl">
                   <a
                     href="/cv/Carlos_Costa_Backend_Cloud.pdf"
                     download="Carlos_Costa_Backend_Cloud.pdf"
-                    className="block rounded-xl px-4 py-3 text-left text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                   >
-                    Backend/Cloud CV
+                    <span className="block font-medium text-white">Backend / Cloud</span>
+                    <span className="mt-0.5 block text-xs text-zinc-500">Python · FastAPI · PostgreSQL · Docker</span>
                   </a>
                   <a
                     href="/cv/Carlos_Costa_FullStack_Mobile.pdf"
                     download="Carlos_Costa_FullStack_Mobile.pdf"
-                    className="block rounded-xl px-4 py-3 text-left text-sm text-zinc-300 transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
                   >
-                    FullStack/Mobile CV
+                    <span className="block font-medium text-white">Full Stack / Mobile</span>
+                    <span className="mt-0.5 block text-xs text-zinc-500">React Native · Next.js · Expo</span>
                   </a>
                 </div>
               )}
             </div>
           </motion.div>
 
+          {/* Social links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -156,7 +193,7 @@ export default function HeroSection() {
               href="https://github.com/carlos98costa"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-300 transition-all hover:border-white/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-400 transition-all hover:border-white/20 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
               aria-label="Abrir GitHub de Carlos Costa"
             >
               <GitHubIcon />
@@ -166,7 +203,7 @@ export default function HeroSection() {
               href="https://linkedin.com/in/devcarloscosta"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-300 transition-all hover:border-white/20 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-400 transition-all hover:border-white/20 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
               aria-label="Abrir LinkedIn de Carlos Costa"
             >
               <LinkedInIcon />
@@ -175,42 +212,17 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
+        {/* Right column — Architecture Visual */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.98, y: 18 }}
+          initial={{ opacity: 0, scale: 0.97, y: 18 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ delay: 0.35, duration: 0.7 }}
           className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-blue-500/12 to-transparent blur-2xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-950/70 p-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <div className="mb-6 border-b border-white/10 pb-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.22em] text-zinc-500">Como trabalho</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-white">Menos improviso. Mais engenharia.</h2>
-              <p className="mt-3 text-sm leading-6 text-zinc-400">
-                O visual comunica maturidade, mas o diferencial é o processo: clareza técnica,
-                escolhas justificadas e entrega verificável.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {operatingModel.map((item) => {
-                const Icon = item.icon
-
-                return (
-                  <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
-                    <div className="flex gap-4">
-                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-400/20 bg-blue-500/10 text-blue-200">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-zinc-100">{item.title}</h3>
-                        <p className="mt-1 text-sm leading-6 text-zinc-400">{item.text}</p>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+          {/* Outer glow */}
+          <div className="absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-500/10 to-violet-500/8 blur-2xl" />
+          <div className="relative">
+            <ArchVisual />
           </div>
         </motion.div>
       </motion.div>
