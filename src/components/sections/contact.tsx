@@ -97,7 +97,7 @@ export default function ContactSection() {
                 pensa execução?
               </span>
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-zinc-400 md:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-7 font-medium text-zinc-300 md:text-lg">
               Fale comigo se precisa tirar uma ideia do papel, organizar uma arquitetura,
               evoluir um app existente ou acelerar uma entrega mobile/web com mais critério técnico.
             </p>
@@ -128,7 +128,7 @@ export default function ContactSection() {
                       <Icon className="h-5 w-5" />
                     </div>
                     <h3 className="text-base font-bold text-white">{card.label}</h3>
-                    <p className="mt-2 flex-1 text-sm leading-6 text-zinc-400">{card.description}</p>
+                    <p className="mt-2 flex-1 text-sm leading-6 font-medium text-zinc-300">{card.description}</p>
                     <div className={`mt-4 inline-flex items-center text-sm font-semibold ${colors.icon} opacity-70 transition-opacity group-hover:opacity-100`}>
                       Abrir
                       <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

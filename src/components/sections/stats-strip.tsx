@@ -78,7 +78,7 @@ export default function StatsStrip() {
               <div className={`text-4xl font-bold tabular-nums tracking-tight md:text-5xl ${stat.color}`}>
                 <Counter to={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="mt-2 text-sm font-semibold text-zinc-200">{stat.label}</div>
+              <div className="mt-2 text-base font-semibold text-zinc-100">{stat.label}</div>
               <div className="mt-0.5 font-mono text-[11px] text-zinc-500">{stat.sub}</div>
             </motion.div>
           ))}

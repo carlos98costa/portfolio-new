@@ -83,7 +83,7 @@ export default function StackSection() {
                 Ferramentas escolhidas por entrega e manutenção.
               </h2>
             </div>
-            <p className="text-base leading-7 text-zinc-400 md:text-lg">
+            <p className="text-base leading-7 font-medium text-zinc-300 md:text-lg">
               Em vez de listar tecnologias soltas, organizo a stack pelo papel que ela cumpre no produto:
               app, interface, API, dados, deploy e operação.
             </p>
@@ -112,7 +112,7 @@ export default function StackSection() {
                   {/* Header */}
                   <div className="mb-5 flex items-start justify-between gap-4">
                     <div>
-                      <h3 className={`text-base font-bold uppercase tracking-[0.12em] ${config.color}`}>
+                      <h3 className={`text-lg font-bold uppercase tracking-[0.12em] ${config.color}`}>
                         {config.label}
                       </h3>
                       <p className="mt-1.5 text-sm leading-6 text-zinc-400">{config.description}</p>

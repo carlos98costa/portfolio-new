@@ -111,7 +111,7 @@ export default function ProjectsSection() {
                 não só pela interface.
               </span>
             </h2>
-            <p className="mt-4 text-base leading-7 text-zinc-400 md:text-lg">
+            <p className="mt-4 text-base leading-7 font-medium text-zinc-300 md:text-lg">
               Cada case destaca contexto e decisões de arquitetura para transmitir domínio de produto real.
             </p>
           </div>
