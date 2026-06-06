@@ -71,6 +71,91 @@ export function Grid360Mockup() {
   )
 }
 
+/** Money360 — AI market analysis and personal portfolio mockup */
+export function Money360Mockup() {
+  return (
+    <div className="relative flex h-full w-full flex-col gap-3 overflow-hidden p-5">
+      <div aria-hidden className="absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(139,92,246,0.18),transparent_34%),radial-gradient(circle_at_85%_22%,rgba(34,197,94,0.12),transparent_28%)]" />
+
+      {/* Header */}
+      <div className="relative flex items-center justify-between">
+        <div>
+          <div className="h-2.5 w-24 rounded-full bg-white/15" />
+          <div className="mt-1.5 h-2 w-36 rounded-full bg-violet-400/20" />
+        </div>
+        <div className="rounded-full border border-violet-300/25 bg-violet-400/10 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-violet-200">
+          IA live
+        </div>
+      </div>
+
+      {/* Asset search + streaming status */}
+      <div className="relative rounded-2xl border border-violet-300/20 bg-white/[0.04] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
+        <div className="flex items-center gap-2 rounded-xl border border-white/[0.07] bg-zinc-950/60 px-3 py-2">
+          <div className="h-2.5 w-2.5 rounded-full bg-emerald-400" />
+          <div className="h-2 w-20 rounded-full bg-white/20" />
+          <div className="ml-auto h-2 w-14 rounded-full bg-violet-400/30" />
+        </div>
+        <div className="mt-3 grid grid-cols-3 gap-2">
+          {[
+            { label: 'Score', value: '82', color: 'text-emerald-300', bg: 'bg-emerald-400/10', border: 'border-emerald-400/20' },
+            { label: 'Risco', value: 'Médio', color: 'text-amber-300', bg: 'bg-amber-400/10', border: 'border-amber-400/20' },
+            { label: 'Cache', value: '1h', color: 'text-violet-300', bg: 'bg-violet-400/10', border: 'border-violet-400/20' },
+          ].map((m) => (
+            <div key={m.label} className={`rounded-xl border ${m.border} ${m.bg} p-2 text-center`}>
+              <div className={`text-xs font-bold ${m.color}`}>{m.value}</div>
+              <div className="mt-0.5 text-[9px] text-zinc-500">{m.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Market chart + report lines */}
+      <div className="relative grid flex-1 gap-3 sm:grid-cols-[0.95fr_1.05fr]">
+        <div className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3">
+          <div className="mb-3 flex items-center justify-between">
+            <div className="h-2 w-14 rounded-full bg-white/10" />
+            <div className="h-2 w-8 rounded-full bg-emerald-400/25" />
+          </div>
+          <div className="flex h-20 items-end gap-1.5">
+            {[34, 50, 44, 72, 58, 84, 67, 92, 76, 88].map((h, i) => (
+              <div
+                key={i}
+                className="flex-1 rounded-sm bg-gradient-to-t from-violet-500/70 via-blue-400/35 to-emerald-300/45"
+                style={{ height: `${h}%` }}
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="space-y-2 rounded-2xl border border-white/[0.07] bg-white/[0.025] p-3">
+          {[
+            { w: '78%', c: 'bg-white/18' },
+            { w: '92%', c: 'bg-white/12' },
+            { w: '64%', c: 'bg-violet-400/25' },
+            { w: '86%', c: 'bg-white/10' },
+            { w: '55%', c: 'bg-emerald-400/25' },
+          ].map((line, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <div className="h-1.5 w-1.5 shrink-0 rounded-full bg-violet-300/60" />
+              <div className={`h-2 rounded-full ${line.c}`} style={{ width: line.w }} />
+            </div>
+          ))}
+          <div className="mt-3 rounded-xl border border-white/[0.07] bg-zinc-950/40 p-2">
+            <MetricBar width="72%" color="bg-gradient-to-r from-violet-400 to-emerald-300" />
+          </div>
+        </div>
+      </div>
+
+      {/* Compliance strip */}
+      <div className="relative flex items-center gap-2 rounded-xl border border-white/[0.07] bg-white/[0.025] px-3 py-2 text-[10px] text-zinc-500">
+        <div className="h-2 w-2 rounded-full bg-violet-300" />
+        <div className="h-1.5 w-40 rounded-full bg-white/10" />
+        <div className="ml-auto h-1.5 w-16 rounded-full bg-white/[0.08]" />
+      </div>
+    </div>
+  )
+}
+
 /** PowerFitness — PWA workout dashboard mockup */
 export function PowerFitnessMockup() {
   return (

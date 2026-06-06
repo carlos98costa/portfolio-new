@@ -10,18 +10,29 @@ import {
   LockKeyhole,
   MonitorSmartphone,
   Smartphone,
+  TrendingUp,
   Utensils,
 } from 'lucide-react'
 import { TechIcon, hasTechIcon } from '@/components/ui/tech-icon'
-import { Grid360Mockup, PowerFitnessMockup } from '@/components/ui/project-mockup'
+import { Grid360Mockup, Money360Mockup, PowerFitnessMockup } from '@/components/ui/project-mockup'
 
 const projectConfig = {
+  money360: {
+    accent: 'violet',
+    role: 'Full Stack AI & Fintech',
+    decision: 'Pipeline resiliente que separa coleta best-effort, cache por ativo/hora, streaming de IA e camadas de compliance para manter rastreabilidade e reduzir custo operacional.',
+    icon: TrendingUp,
+    number: '01',
+    mockup: Money360Mockup,
+    imageBg: 'bg-zinc-950',
+    imagePad: false,
+  },
   'grid-360': {
     accent: 'emerald',
     role: 'Tech Lead Mobile & Backend',
     decision: 'Arquitetura preparada para dados sensíveis, sincronização biométrica e evolução por módulos independentes.',
     icon: Smartphone,
-    number: '01',
+    number: '02',
     mockup: Grid360Mockup,
     imageBg: 'bg-zinc-950',
     imagePad: false,
@@ -31,7 +42,7 @@ const projectConfig = {
     role: 'Full Stack Web App',
     decision: 'Produto social com navegação pública, áreas autenticadas e API remota — validando interação real entre usuários e restaurantes.',
     icon: Utensils,
-    number: '02',
+    number: '03',
     mockup: null,
     imageBg: 'bg-zinc-900',
     imagePad: true,
@@ -41,7 +52,7 @@ const projectConfig = {
     role: 'Full Stack Lead',
     decision: 'Separação clara entre frontend, backend e integrações externas para reduzir acoplamento operacional.',
     icon: MonitorSmartphone,
-    number: '03',
+    number: '04',
     mockup: PowerFitnessMockup,
     imageBg: 'bg-zinc-950',
     imagePad: false,
@@ -49,6 +60,22 @@ const projectConfig = {
 }
 
 const accentClasses = {
+  violet: {
+    border: 'border-violet-400/20',
+    hoverBorder: 'hover:border-violet-300/50',
+    text: 'text-violet-200',
+    textMuted: 'text-violet-400',
+    bg: 'bg-violet-500/10',
+    badgeBorder: 'border-violet-400/30',
+    numberColor: 'text-violet-400',
+    mockupBg: 'bg-violet-950/40',
+    decisionBorder: 'border-violet-400/25',
+    decisionBg: 'bg-gradient-to-br from-violet-500/[0.15] via-blue-500/[0.06] to-transparent',
+    decisionGlow: 'shadow-[inset_0_1px_0_rgba(139,92,246,0.18)]',
+    glow: 'hover:shadow-[0_30px_80px_-32px_rgba(139,92,246,0.5)]',
+    borderGrad: '[background:linear-gradient(140deg,rgba(139,92,246,0.62),rgba(59,130,246,0.22)_36%,transparent_64%)]',
+    glowRadial: 'bg-[radial-gradient(120%_80%_at_50%_-10%,rgba(139,92,246,0.18),transparent_60%)]',
+  },
   emerald: {
     border: 'border-emerald-400/20',
     hoverBorder: 'hover:border-emerald-300/50',

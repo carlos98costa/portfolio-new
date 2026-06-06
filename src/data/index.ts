@@ -2,6 +2,16 @@ import { Project, Experience, Technology } from '@/types'
 
 export const projects: Project[] = [
   {
+    id: 'money360',
+    title: 'Money360 — Análise Financeira por IA',
+    description: 'Plataforma educacional de pesquisa de mercado financeiro que combina dados reais, notícias, sentimento e IA para gerar relatórios estruturados de cripto, ações e ETFs, além de um módulo autenticado de carteira pessoal com suitability e sugestões de alocação.',
+    techStack: ['Next.js', 'React', 'TypeScript', 'OpenAI', 'Supabase', 'PostgreSQL', 'Vercel'],
+    highlight: 'Motor de análise com streaming, cache, compliance e dados de mercado em tempo real',
+    imageUrl: '/images/projects/money360.png',
+    liveUrl: 'https://analise-financeira-ww1p.vercel.app',
+    repoUrl: 'https://github.com/carlos98costa/analiseFinanceira'
+  },
+  {
     id: 'grid-360',
     title: 'GRID 360 — Plataforma Health & Fitness',
     description: 'Aplicação mobile iOS/Android com React Native + Expo, integrando Apple HealthKit e Google Health Connect para sincronização biométrica de sono, BPM, respiração e SpO2.',
@@ -65,9 +75,11 @@ export const technologies: Technology[] = [
   { name: 'React', category: 'frontend' },
   { name: 'TypeScript', category: 'frontend' },
   { name: 'Responsive UI', category: 'frontend' },
+  { name: 'OpenAI', category: 'backend' },
   { name: 'FastAPI', category: 'backend' },
   { name: 'REST APIs', category: 'backend' },
   { name: 'JWT/Auth', category: 'backend' },
+  { name: 'Supabase', category: 'database' },
   { name: 'PostgreSQL', category: 'database' },
   { name: 'Docker', category: 'tools' },
   { name: 'GitHub Actions', category: 'tools' },
