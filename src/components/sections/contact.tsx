@@ -23,7 +23,6 @@ const contactLinks = [
     href: 'https://linkedin.com/in/devcarloscosta',
     icon: LinkedInIcon,
     external: true,
-    accent: 'blue',
   },
   {
     label: 'GitHub',
@@ -31,7 +30,6 @@ const contactLinks = [
     href: 'https://github.com/carlos98costa',
     icon: GitHubIcon,
     external: true,
-    accent: 'zinc',
   },
   {
     label: 'Cases',
@@ -39,7 +37,6 @@ const contactLinks = [
     href: '#projects',
     icon: Briefcase,
     external: false,
-    accent: 'violet',
   },
   {
     label: 'Download CV',
@@ -48,42 +45,12 @@ const contactLinks = [
     icon: Download,
     external: false,
     download: true,
-    accent: 'emerald',
   },
 ]
 
-const accentMap = {
-  blue: {
-    icon: 'text-blue-300',
-    iconGrad: 'from-blue-500/30 to-blue-600/10 border-blue-400/30',
-    glow: 'hover:border-blue-400/40 hover:shadow-[0_26px_64px_-30px_rgba(59,130,246,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(59,130,246,0.5),rgba(255,255,255,0.05)_42%,transparent_68%)]',
-  },
-  zinc: {
-    icon: 'text-zinc-100',
-    iconGrad: 'from-white/15 to-white/[0.04] border-white/20',
-    glow: 'hover:border-white/25 hover:shadow-[0_26px_64px_-30px_rgba(255,255,255,0.16)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(255,255,255,0.4),rgba(255,255,255,0.05)_42%,transparent_68%)]',
-  },
-  violet: {
-    icon: 'text-violet-300',
-    iconGrad: 'from-violet-500/30 to-violet-600/10 border-violet-400/30',
-    glow: 'hover:border-violet-400/40 hover:shadow-[0_26px_64px_-30px_rgba(139,92,246,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(139,92,246,0.5),rgba(255,255,255,0.05)_42%,transparent_68%)]',
-  },
-  emerald: {
-    icon: 'text-emerald-300',
-    iconGrad: 'from-emerald-500/30 to-emerald-600/10 border-emerald-400/30',
-    glow: 'hover:border-emerald-400/40 hover:shadow-[0_26px_64px_-30px_rgba(16,185,129,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(16,185,129,0.5),rgba(255,255,255,0.05)_42%,transparent_68%)]',
-  },
-}
-
 export default function ContactSection() {
   return (
-    <section id="contact" className="relative overflow-hidden py-24">
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-72 bg-gradient-to-t from-blue-950/15 to-transparent" />
-
+    <section id="contact" className="py-24">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -92,26 +59,20 @@ export default function ContactSection() {
           viewport={{ once: true }}
           className="mx-auto max-w-5xl"
         >
-          {/* Section label + heading */}
           <div className="mb-12 text-center">
             <p className="font-mono text-xs font-semibold uppercase tracking-[0.28em] text-zinc-500">contato</p>
             <h2 className="mx-auto mt-4 max-w-2xl text-3xl font-bold tracking-tight text-white md:text-5xl">
-              Quer discutir produto com alguém que também{' '}
-              <span className="bg-gradient-to-r from-blue-400 to-violet-400 bg-clip-text text-transparent">
-                pensa execução?
-              </span>
+              Quer discutir produto com alguém que também pensa execução?
             </h2>
-            <p className="mx-auto mt-5 max-w-xl text-base leading-7 font-medium text-zinc-300 md:text-lg">
+            <p className="mx-auto mt-5 max-w-xl text-base leading-7 font-medium text-zinc-400 md:text-lg">
               Fale comigo se precisa tirar uma ideia do papel, organizar uma arquitetura,
               evoluir um app existente ou acelerar uma entrega mobile/web com mais critério técnico.
             </p>
           </div>
 
-          {/* Contact cards grid */}
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {contactLinks.map((card, index) => {
               const Icon = card.icon
-              const colors = accentMap[card.accent as keyof typeof accentMap]
 
               return (
                 <motion.div
@@ -126,16 +87,14 @@ export default function ContactSection() {
                     target={card.external ? '_blank' : undefined}
                     rel={card.external ? 'noopener noreferrer' : undefined}
                     download={card.download ? 'Carlos_Costa_FullStack_Mobile.pdf' : undefined}
-                    className={`group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/[0.10] bg-zinc-950/60 p-5 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm transition-all duration-500 hover:-translate-y-1.5 ${colors.glow} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300`}
+                    className="group flex h-full cursor-pointer flex-col rounded-[1.5rem] border border-white/[0.08] bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.14] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                   >
-                    {/* Gradient border */}
-                    <div aria-hidden className={`mask-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] p-px ${colors.borderGrad}`} />
-                    <div className={`relative mb-4 flex h-12 w-12 items-center justify-center rounded-full border bg-gradient-to-br ${colors.iconGrad} ${colors.icon} shadow-lg shadow-black/30 transition-transform duration-300 group-hover:scale-110`}>
+                    <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-white/[0.09] bg-white/[0.05] text-zinc-300 transition-transform duration-300 group-hover:scale-110">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="relative text-base font-bold text-white">{card.label}</h3>
-                    <p className="relative mt-2 flex-1 text-sm leading-6 font-medium text-zinc-300">{card.description}</p>
-                    <div className={`relative mt-4 inline-flex items-center text-sm font-semibold ${colors.icon} opacity-70 transition-opacity group-hover:opacity-100`}>
+                    <h3 className="text-base font-bold text-white">{card.label}</h3>
+                    <p className="mt-2 flex-1 text-sm leading-6 font-medium text-zinc-400">{card.description}</p>
+                    <div className="mt-4 inline-flex items-center text-sm font-semibold text-zinc-500 transition-all group-hover:text-white">
                       Abrir
                       <ArrowUpRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
@@ -145,22 +104,20 @@ export default function ContactSection() {
             })}
           </div>
 
-          {/* Bottom email CTA */}
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
             viewport={{ once: true }}
-            className="relative mt-6 flex flex-col items-center justify-between gap-4 overflow-hidden rounded-[1.5rem] border border-blue-400/20 bg-gradient-to-r from-blue-500/[0.12] via-zinc-950/40 to-violet-500/[0.10] px-6 py-5 shadow-[0_22px_64px_-30px_rgba(59,130,246,0.4)] backdrop-blur-sm sm:flex-row"
+            className="mt-6 flex flex-col items-center justify-between gap-4 rounded-[1.5rem] border border-white/[0.08] bg-white/[0.03] px-6 py-5 sm:flex-row"
           >
-            <div aria-hidden className="mask-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] p-px [background:linear-gradient(120deg,rgba(59,130,246,0.5),transparent_45%,rgba(139,92,246,0.4))]" />
-            <div className="relative text-center sm:text-left">
+            <div className="text-center sm:text-left">
               <p className="text-sm font-semibold text-zinc-200">Prefere e-mail direto?</p>
               <p className="mt-0.5 text-sm text-zinc-500">carlos98costa@icloud.com</p>
             </div>
             <a
               href="mailto:carlos98costa@icloud.com"
-              className="relative inline-flex cursor-pointer items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_34px_rgba(59,130,246,0.5)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-black transition-all hover:-translate-y-0.5 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               Enviar e-mail
               <ArrowUpRight className="h-4 w-4" />

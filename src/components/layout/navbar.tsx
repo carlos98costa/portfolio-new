@@ -37,25 +37,25 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="fixed left-0 top-0 z-50 w-full px-3 pt-3"
     >
-      <nav className="container mx-auto rounded-2xl border border-blue-400/15 bg-zinc-950/75 px-4 shadow-2xl shadow-blue-950/20 backdrop-blur-xl">
+      <nav className="container mx-auto rounded-2xl border border-white/[0.08] bg-black/80 px-4 shadow-2xl shadow-black/60 backdrop-blur-xl">
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
             onClick={closeMenu}
-            className="group inline-flex items-center gap-3 font-mono text-lg font-bold tracking-tight text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+            className="group inline-flex items-center gap-3 font-mono text-lg font-bold tracking-tight text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-400/30 bg-gradient-to-br from-blue-600/30 to-violet-600/20 text-blue-100 shadow-[0_0_20px_rgba(59,130,246,0.22)] transition-all group-hover:shadow-[0_0_28px_rgba(59,130,246,0.32)]">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.12] bg-white/[0.06] text-sm font-bold text-white transition-all group-hover:border-white/[0.20] group-hover:bg-white/[0.09]">
               CC
             </span>
-            <span className="hidden text-sm uppercase tracking-[0.28em] text-zinc-500 sm:inline">Portfolio</span>
+            <span className="hidden text-sm uppercase tracking-[0.28em] text-zinc-600 sm:inline">Portfolio</span>
           </Link>
 
-          <div className="hidden items-center rounded-full border border-white/10 bg-white/[0.03] p-1 md:flex">
+          <div className="hidden items-center rounded-full border border-white/[0.07] bg-white/[0.03] p-1 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-zinc-400 transition-all hover:bg-blue-500/10 hover:text-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                className="rounded-full px-4 py-2 text-sm font-medium text-zinc-500 transition-all hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               >
                 {item.label}
               </Link>
@@ -67,7 +67,7 @@ export default function Navbar() {
               href="https://github.com/carlos98costa"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden min-h-11 min-w-11 items-center justify-center rounded-xl text-zinc-400 transition-all hover:bg-white/5 hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:inline-flex"
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded-xl text-zinc-500 transition-all hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:inline-flex"
               aria-label="Abrir GitHub de Carlos Costa"
             >
               <GitHubIcon />
@@ -76,7 +76,7 @@ export default function Navbar() {
               href="https://linkedin.com/in/devcarloscosta"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden min-h-11 min-w-11 items-center justify-center rounded-xl text-zinc-400 transition-all hover:bg-white/5 hover:text-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:inline-flex"
+              className="hidden min-h-11 min-w-11 items-center justify-center rounded-xl text-zinc-500 transition-all hover:bg-white/[0.05] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:inline-flex"
               aria-label="Abrir LinkedIn de Carlos Costa"
             >
               <LinkedInIcon />
@@ -86,7 +86,7 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen((open) => !open)}
               aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
               aria-expanded={isMenuOpen}
-              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-white/10 bg-white/[0.04] text-zinc-200 transition-all hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 md:hidden"
+              className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-zinc-300 transition-all hover:bg-white/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 md:hidden"
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -98,7 +98,7 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.2 }}
-            className="border-t border-white/10 py-3 md:hidden"
+            className="border-t border-white/[0.07] py-3 md:hidden"
           >
             <div className="grid gap-2">
               {navItems.map((item) => (
@@ -106,7 +106,7 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={closeMenu}
-                  className="rounded-xl px-4 py-3 text-sm font-medium text-zinc-300 transition-all hover:bg-blue-500/10 hover:text-blue-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                  className="rounded-xl px-4 py-3 text-sm font-medium text-zinc-400 transition-all hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                 >
                   {item.label}
                 </Link>

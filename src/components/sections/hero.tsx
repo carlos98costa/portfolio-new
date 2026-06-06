@@ -24,25 +24,16 @@ const credibility = [
     label: 'Mobile',
     value: 'React Native, Expo e integrações nativas',
     icon: Smartphone,
-    color: 'text-orange-300',
-    iconBg: 'border-orange-400/25 bg-orange-500/10',
-    glow: 'hover:border-orange-400/35 hover:shadow-[0_18px_44px_-20px_rgba(249,115,22,0.5)]',
   },
   {
     label: 'Backend',
     value: 'FastAPI, PostgreSQL, APIs e autenticação',
     icon: Server,
-    color: 'text-emerald-300',
-    iconBg: 'border-emerald-400/25 bg-emerald-500/10',
-    glow: 'hover:border-emerald-400/35 hover:shadow-[0_18px_44px_-20px_rgba(16,185,129,0.5)]',
   },
   {
     label: 'Entrega',
     value: 'Docker, CI/CD, Railway, Vercel e cloud',
     icon: Cloud,
-    color: 'text-sky-300',
-    iconBg: 'border-sky-400/25 bg-sky-500/10',
-    glow: 'hover:border-sky-400/35 hover:shadow-[0_18px_44px_-20px_rgba(56,189,248,0.5)]',
   },
 ]
 
@@ -66,18 +57,13 @@ export default function HeroSection() {
       onMouseMove={handleMouseMove}
       className="relative flex min-h-screen items-center overflow-hidden px-4 py-24 sm:px-6 lg:px-8"
     >
-      {/* Mouse-tracking spotlight */}
+      {/* Mouse-tracking spotlight — very subtle */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(700px circle at ${mouse.x * 100}% ${mouse.y * 100}%, rgba(59,130,246,0.10), transparent 50%)`,
+          background: `radial-gradient(700px circle at ${mouse.x * 100}% ${mouse.y * 100}%, rgba(255,255,255,0.03), transparent 50%)`,
         }}
       />
-
-      {/* Static top line */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
-      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -95,7 +81,7 @@ export default function HeroSection() {
             transition={{ delay: 0.1, duration: 0.5 }}
             className="mb-6 flex flex-wrap items-center justify-center gap-3 lg:justify-start"
           >
-            <div className="relative h-11 w-11 overflow-hidden rounded-full border-2 border-blue-400/40 shadow-[0_0_16px_rgba(59,130,246,0.25)]">
+            <div className="relative h-11 w-11 overflow-hidden rounded-full border border-white/[0.15]">
               <Image
                 src="/images/myself.jpg"
                 fill
@@ -105,7 +91,7 @@ export default function HeroSection() {
                 priority
               />
             </div>
-            <div className="relative inline-flex items-center gap-2.5 rounded-full border border-blue-400/30 bg-gradient-to-r from-blue-500/20 via-blue-500/10 to-violet-500/15 px-4 py-2 text-sm font-semibold text-blue-100 shadow-[0_0_34px_rgba(59,130,246,0.25)] backdrop-blur">
+            <div className="inline-flex items-center gap-2.5 rounded-full border border-white/[0.10] bg-white/[0.05] px-4 py-2 text-sm font-semibold text-zinc-200 backdrop-blur">
               <span className="relative flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
@@ -121,17 +107,14 @@ export default function HeroSection() {
             transition={{ delay: 0.2, duration: 0.7 }}
             className="mx-auto max-w-5xl text-5xl font-bold tracking-[-0.04em] text-white sm:text-6xl md:text-7xl lg:mx-0 lg:text-[5.5rem] lg:leading-[1.02]"
           >
-            Eu desenho, construo e{' '}
-            <span className="bg-gradient-to-r from-blue-300 via-cyan-300 to-violet-400 bg-clip-text text-transparent drop-shadow-[0_2px_32px_rgba(56,189,248,0.28)]">
-              entrego produto digital em produção.
-            </span>
+            Eu desenho, construo e entrego produto digital em produção.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="mx-auto mt-7 max-w-2xl text-lg leading-8 font-medium text-zinc-200 md:text-xl lg:mx-0"
+            className="mx-auto mt-7 max-w-2xl text-lg leading-8 font-medium text-zinc-400 md:text-xl lg:mx-0"
           >
             Sou Carlos Costa. Atuo da arquitetura ao deploy em apps mobile, PWAs e APIs,
             com foco em decisões técnicas claras, integrações reais e produto que continua evoluindo depois do lançamento.
@@ -149,15 +132,15 @@ export default function HeroSection() {
               return (
                 <div
                   key={item.label}
-                  className={`group rounded-2xl border border-white/10 bg-white/[0.05] p-4 text-left backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07] ${item.glow}`}
+                  className="group rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4 text-left transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.14]"
                 >
                   <div className="flex items-center gap-2">
-                    <span className={`flex h-8 w-8 items-center justify-center rounded-xl border ${item.iconBg} ${item.color} transition-transform duration-300 group-hover:scale-110`}>
+                    <span className="flex h-8 w-8 items-center justify-center rounded-xl border border-white/[0.09] bg-white/[0.05] text-zinc-400 transition-transform duration-300 group-hover:scale-110">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <div className={`text-xs font-bold uppercase tracking-[0.18em] ${item.color}`}>{item.label}</div>
+                    <div className="text-xs font-bold uppercase tracking-[0.18em] text-zinc-500">{item.label}</div>
                   </div>
-                  <div className="mt-3 text-sm leading-6 font-medium text-zinc-200">{item.value}</div>
+                  <div className="mt-3 text-sm leading-6 font-medium text-zinc-300">{item.value}</div>
                 </div>
               )
             })}
@@ -172,7 +155,7 @@ export default function HeroSection() {
           >
             <Link
               href="#projects"
-              className="group relative inline-flex min-h-12 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 font-semibold text-white shadow-[0_0_24px_rgba(59,130,246,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_32px_rgba(59,130,246,0.45)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="group inline-flex min-h-12 items-center justify-center rounded-xl bg-white px-6 py-3 font-semibold text-black transition-all hover:-translate-y-0.5 hover:bg-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/50"
             >
               Ver cases e decisões técnicas
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -183,17 +166,17 @@ export default function HeroSection() {
                 type="button"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-expanded={isOpen}
-                className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-white/[0.14] bg-white/[0.06] px-6 py-3 font-semibold text-zinc-100 transition-all hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/[0.09] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 sm:w-auto"
+                className="inline-flex min-h-12 w-full cursor-pointer items-center justify-center rounded-xl border border-white/[0.12] bg-transparent px-6 py-3 font-semibold text-zinc-200 transition-all hover:-translate-y-0.5 hover:border-white/[0.20] hover:bg-white/[0.05] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30 sm:w-auto"
               >
                 <FileDown className="mr-2 h-4 w-4" />
                 Download CV
               </button>
               {isOpen && (
-                <div className="absolute left-1/2 z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/95 p-2 shadow-2xl shadow-black/50 backdrop-blur-xl">
+                <div className="absolute left-1/2 z-50 mt-3 w-64 -translate-x-1/2 overflow-hidden rounded-2xl border border-white/[0.09] bg-zinc-950 p-2 shadow-2xl shadow-black/80 backdrop-blur-xl">
                   <a
                     href="/cv/Carlos_Costa_Backend_Cloud.pdf"
                     download="Carlos_Costa_Backend_Cloud.pdf"
-                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                   >
                     <span className="block font-medium text-white">Backend / Cloud</span>
                     <span className="mt-0.5 block text-xs text-zinc-500">Python · FastAPI · PostgreSQL · Docker</span>
@@ -201,7 +184,7 @@ export default function HeroSection() {
                   <a
                     href="/cv/Carlos_Costa_FullStack_Mobile.pdf"
                     download="Carlos_Costa_FullStack_Mobile.pdf"
-                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+                    className="block rounded-xl px-4 py-3 text-left text-sm transition-colors hover:bg-white/[0.06] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
                   >
                     <span className="block font-medium text-white">Full Stack / Mobile</span>
                     <span className="mt-0.5 block text-xs text-zinc-500">React Native · Next.js · Expo</span>
@@ -222,7 +205,7 @@ export default function HeroSection() {
               href="https://github.com/carlos98costa"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-400 transition-all hover:border-white/20 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/[0.08] bg-transparent px-4 py-2.5 font-medium text-zinc-500 transition-all hover:border-white/[0.15] hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               aria-label="Abrir GitHub de Carlos Costa"
             >
               <GitHubIcon />
@@ -232,7 +215,7 @@ export default function HeroSection() {
               href="https://linkedin.com/in/devcarloscosta"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 font-medium text-zinc-400 transition-all hover:border-white/20 hover:text-zinc-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-300"
+              className="inline-flex min-h-11 cursor-pointer items-center justify-center rounded-xl border border-white/[0.08] bg-transparent px-4 py-2.5 font-medium text-zinc-500 transition-all hover:border-white/[0.15] hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30"
               aria-label="Abrir LinkedIn de Carlos Costa"
             >
               <LinkedInIcon />
@@ -248,18 +231,19 @@ export default function HeroSection() {
           transition={{ delay: 0.35, duration: 0.7 }}
           className="relative mx-auto w-full max-w-xl lg:max-w-none"
         >
-          {/* Outer glow — slow breathing bloom */}
+          {/* Very subtle bloom — toned down */}
           <motion.div
             aria-hidden
-            className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(55%_55%_at_50%_35%,rgba(59,130,246,0.24),transparent_70%)] blur-2xl"
-            animate={{ opacity: [0.55, 0.9, 0.55], scale: [0.98, 1.03, 0.98] }}
-            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute -inset-8 rounded-[3rem] bg-[radial-gradient(55%_55%_at_50%_35%,rgba(255,255,255,0.04),transparent_70%)] blur-2xl"
+            animate={{ opacity: [0.4, 0.7, 0.4], scale: [0.99, 1.01, 0.99] }}
+            transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
           />
           <div className="relative">
             <ArchVisual />
           </div>
         </motion.div>
       </motion.div>
+
     </section>
   )
 }

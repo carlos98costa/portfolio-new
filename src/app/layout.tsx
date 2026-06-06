@@ -31,13 +31,7 @@ export default function RootLayout({
       lang="pt-BR"
       className={`${inter.variable} ${jbMono.variable} h-full antialiased dark`}
     >
-      <body className="relative flex min-h-full flex-col bg-zinc-950">
-        <div className="pointer-events-none fixed inset-0 -z-10">
-          <div className="absolute inset-x-0 top-0 h-[480px] bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.14),transparent_62%)]" />
-          <div className="absolute left-0 top-0 h-full w-px bg-gradient-to-b from-blue-300/20 via-white/5 to-transparent" />
-          <div className="absolute right-0 top-0 h-full w-px bg-gradient-to-b from-cyan-300/15 via-white/5 to-transparent" />
-          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[length:100%_96px] opacity-40" />
-        </div>
+      <body className="relative flex min-h-full flex-col bg-black">
         {children}
       </body>
     </html>

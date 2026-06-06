@@ -9,28 +9,16 @@ const principles = [
     icon: Workflow,
     title: 'Arquitetura clara',
     text: 'Separação de responsabilidades, contratos simples e estrutura que a equipa consegue manter.',
-    color: 'text-blue-300',
-    iconGrad: 'from-blue-500/35 to-blue-600/10 border-blue-400/30',
-    glow: 'hover:border-blue-300/40 hover:shadow-[0_26px_64px_-30px_rgba(59,130,246,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(59,130,246,0.5),rgba(255,255,255,0.05)_40%,transparent_66%)]',
   },
   {
     icon: Gauge,
     title: 'Performance prática',
     text: 'Otimização onde afeta uso real: carregamento, latência, sincronização e experiência mobile.',
-    color: 'text-emerald-300',
-    iconGrad: 'from-emerald-500/35 to-emerald-600/10 border-emerald-400/30',
-    glow: 'hover:border-emerald-300/40 hover:shadow-[0_26px_64px_-30px_rgba(16,185,129,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(16,185,129,0.5),rgba(255,255,255,0.05)_40%,transparent_66%)]',
   },
   {
     icon: Users,
     title: 'Liderança técnica',
     text: 'Tradução entre negócio e engenharia para reduzir ruído, priorizar risco e entregar com previsibilidade.',
-    color: 'text-violet-300',
-    iconGrad: 'from-violet-500/35 to-violet-600/10 border-violet-400/30',
-    glow: 'hover:border-violet-300/40 hover:shadow-[0_26px_64px_-30px_rgba(139,92,246,0.5)]',
-    borderGrad: '[background:linear-gradient(140deg,rgba(139,92,246,0.5),rgba(255,255,255,0.05)_40%,transparent_66%)]',
   },
 ]
 
@@ -47,43 +35,36 @@ export default function AboutSection() {
         >
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
 
-            {/* Left — photo card with gradient border */}
-            <div className="p-px rounded-[2rem] bg-gradient-to-br from-blue-500/60 via-blue-400/10 to-violet-500/50 shadow-[0_24px_80px_-24px_rgba(59,130,246,0.32)]">
-              <div className="overflow-hidden rounded-[calc(2rem-1px)] bg-zinc-900">
+            {/* Left — photo card */}
+            <div className="overflow-hidden rounded-[2rem] border border-white/[0.08]">
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <Image
+                  src="/images/myself.jpg"
+                  fill
+                  alt="Carlos Costa — Tech Lead Full Stack & Mobile"
+                  className="object-cover object-[center_18%] scale-105"
+                  sizes="(min-width: 1024px) 35vw, 100vw"
+                />
+                <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black to-transparent" />
+              </div>
 
-                {/* Photo — aspect ratio keeps face proportional */}
-                <div className="relative aspect-[4/5] w-full overflow-hidden">
-                  <Image
-                    src="/images/myself.jpg"
-                    fill
-                    alt="Carlos Costa — Tech Lead Full Stack & Mobile"
-                    className="object-cover object-[center_18%] scale-105"
-                    sizes="(min-width: 1024px) 35vw, 100vw"
-                  />
-                  {/* Subtle vignette — only bottom 25% */}
-                  <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-zinc-900 to-transparent" />
-                </div>
+              <div className="bg-zinc-950 px-6 pb-6 pt-4">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600">sobre</p>
+                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-white">Carlos Costa</h2>
+                <p className="mt-0.5 text-sm font-medium text-zinc-400">Tech Lead Full Stack & Mobile</p>
 
-                {/* Info below photo */}
-                <div className="px-6 pb-6 pt-4">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500">sobre</p>
-                  <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-white">Carlos Costa</h2>
-                  <p className="mt-0.5 text-sm font-medium text-blue-400">Tech Lead Full Stack & Mobile</p>
+                <p className="mt-4 text-sm leading-6 text-zinc-500">
+                  Decisões técnicas que sustentam produto, equipa e operação — muito além da primeira versão.
+                </p>
 
-                  <p className="mt-4 text-sm leading-6 text-zinc-400">
-                    Decisões técnicas que sustentam produto, equipa e operação — muito além da primeira versão.
-                  </p>
-
-                  {/* Stats */}
-                  <div className="mt-5 grid grid-cols-2 gap-2">
-                    <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3 text-center transition-colors hover:border-blue-400/30 hover:bg-white/[0.09]">
-                      <div className="bg-gradient-to-br from-blue-200 to-blue-500 bg-clip-text text-3xl font-bold text-transparent">3+</div>
-                      <div className="mt-1 text-[11px] font-medium text-zinc-400">anos de exp.</div>
-                    </div>
-                    <div className="rounded-xl border border-white/10 bg-white/[0.06] p-3 text-center transition-colors hover:border-emerald-400/30 hover:bg-white/[0.09]">
-                      <div className="bg-gradient-to-br from-emerald-200 to-emerald-500 bg-clip-text text-3xl font-bold text-transparent">3</div>
-                      <div className="mt-1 text-[11px] font-medium text-zinc-400">projetos live</div>
-                    </div>
+                <div className="mt-5 grid grid-cols-2 gap-2">
+                  <div className="rounded-xl border border-white/[0.07] bg-white/[0.04] p-3 text-center">
+                    <div className="text-3xl font-bold text-white">3+</div>
+                    <div className="mt-1 text-[11px] font-medium text-zinc-500">anos de exp.</div>
+                  </div>
+                  <div className="rounded-xl border border-white/[0.07] bg-white/[0.04] p-3 text-center">
+                    <div className="text-3xl font-bold text-white">3</div>
+                    <div className="mt-1 text-[11px] font-medium text-zinc-500">projetos live</div>
                   </div>
                 </div>
               </div>
@@ -91,9 +72,8 @@ export default function AboutSection() {
 
             {/* Right — bio + principles */}
             <div className="space-y-5">
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900/70 p-7 backdrop-blur-sm">
-                <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/[0.07] via-transparent to-violet-500/[0.06]" />
-                <div className="relative space-y-5 text-lg leading-8 font-medium text-zinc-100">
+              <div className="overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.03] p-7">
+                <div className="space-y-5 text-lg leading-8 font-medium text-zinc-300">
                   <p>
                     Desenvolvedor Full Stack & Mobile Tech Lead especializado em construir aplicações
                     escaláveis e produtos reais. Tenho experiência end-to-end: app, backend, dados,
@@ -113,15 +93,13 @@ export default function AboutSection() {
                   return (
                     <div
                       key={item.title}
-                      className={`group relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/70 p-5 shadow-[0_12px_40px_-20px_rgba(0,0,0,0.85)] transition-all duration-500 hover:-translate-y-1.5 ${item.glow}`}
+                      className="group relative overflow-hidden rounded-3xl border border-white/[0.08] bg-white/[0.03] p-5 transition-all duration-300 hover:-translate-y-1 hover:border-white/[0.14]"
                     >
-                      {/* Gradient border */}
-                      <div aria-hidden className={`mask-border pointer-events-none absolute inset-0 z-10 rounded-[inherit] p-px ${item.borderGrad}`} />
-                      <div className={`relative mb-4 flex h-12 w-12 items-center justify-center rounded-full border bg-gradient-to-br ${item.iconGrad} ${item.color} shadow-lg shadow-black/30 transition-transform duration-300 group-hover:scale-110`}>
+                      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/[0.09] bg-white/[0.06] text-zinc-300 transition-transform duration-300 group-hover:scale-110">
                         <Icon className="h-6 w-6" />
                       </div>
-                      <h3 className="relative text-base font-semibold text-white">{item.title}</h3>
-                      <p className="relative mt-2 text-sm leading-6 font-medium text-zinc-200">{item.text}</p>
+                      <h3 className="text-base font-semibold text-white">{item.title}</h3>
+                      <p className="mt-2 text-sm leading-6 font-medium text-zinc-400">{item.text}</p>
                     </div>
                   )
                 })}
